@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Southpole Autos | Premium Logistics & All-Round Mobility Solutions</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',
+                            goldLight: '#F3E5AB',
+                            goldDark: '#AA7C11',
+                            darkBg: '#080A0E',
+                            cardBg: '#111520',
+                            accent: '#00F0FF',
+                            waGreen: '#25D366'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Cinzel', 'serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #080A0E;
+            color: #E2E8F0;
+        }
+
+        h1, h2, h3, .font-heading {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Pulsing Glow Animation for Header RC Badge */
+        @keyframes rcGlow {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.8), inset 0 0 10px rgba(212, 175, 55, 0.4);
+                border-color: #FFD700;
+                text-shadow: 0 0 8px rgba(255, 215, 0, 0.9);
+            }
+            50% {
+                box-shadow: 0 0 28px rgba(255, 215, 0, 1), 0 0 40px rgba(212, 175, 55, 0.6), inset 0 0 15px rgba(255, 215, 0, 0.7);
+                border-color: #FFF;
+                text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+            }
+        }
+
+        /* WhatsApp Pulsing Animation */
+        @keyframes waPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .rc-glowing-badge {
+            animation: rcGlow 2.5s infinite ease-in-out;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(17, 21, 32, 0.95) 100%);
+        }
+
+        .wa-float-btn {
+            animation: waPulse 2s infinite;
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF5C0 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-panel {
+            background: rgba(17, 21, 32, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .glass-nav {
+            background: rgba(8, 10, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Tab Transition Styling */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .page-section.active-section {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080A0E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D3748;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-brand-gold selection:text-black">
+
+    <!-- TOP CENTERED HEADER SECTION -->
+    <header class="w-full glass-nav sticky top-0 z-40 transition-all duration-300 shadow-2xl">
+        
+        <!-- Header Top Banner: Centered Company Name, Glowing RC & Contacts -->
+        <div class="pt-4 pb-3 border-b border-gray-800/80 px-4">
+            <div class="max-w-7xl mx-auto flex flex-col items-center justify-center text-center">
+                
+                <!-- Company Name & Glowing RC Badge -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-2">
+                    <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('home')">
+                        <i class="fa-solid fa-car-side text-3xl sm:text-4xl text-brand-gold"></i>
+                        <h1 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-widest uppercase gold-gradient-text">
+                            SOUTHPOLE AUTOS
+                        </h1>
+                    </div>
+
+                    <!-- ATTENTION-GRABBING GLOWING RC TAG -->
+                    <div class="rc-glowing-badge px-3.5 py-1 rounded-full border-2 border-brand-gold text-brand-gold font-bold text-xs sm:text-sm tracking-wider flex items-center gap-2 shadow-lg" title="Verified Nigerian Corporate Registration">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping inline-block"></span>
+                        <i class="fa-solid fa-shield-halved text-xs"></i>
+                        <span>RC: 6944368</span>
+                    </div>
+                </div>
+
+                <!-- Centered Location & Contact Info Directly Below -->
+                <div class="flex flex-wrap items-center justify-center gap-y-2 gap-x-4 sm:gap-x-6 text-xs sm:text-sm text-gray-300 font-medium">
+                    <a href="https://wa.me/2349131466345?text=Hello%20Southpole%20Autos,%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" class="flex items-center gap-1.5 hover:text-brand-gold transition-colors bg-white/5 px-3 py-1 rounded-full border border-white/10 hover:border-brand-gold/50">
+                        <i class="fa-solid fa-phone text-brand-gold"></i>
+                        <span>+234 913 146 6345</span>
+                    </a>
+                    
+                    <a href="mailto:southpoleautos@gmail.com" class="hidden md:flex items-center gap-1.5 hover:text-brand-gold transition-colors bg-white/5 px-3 py-1 rounded-full border border-white/10 hover:border-brand-gold/50">
+                        <i class="fa-solid fa-envelope text-brand-gold"></i>
+                        <span>southpoleautos@gmail.com</span>
+                    </a>
+
+                    <div class="flex items-center gap-1.5 bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                        <i class="fa-solid fa-location-dot text-brand-gold"></i>
+                        <span>Port Harcourt, Rivers State, Nigeria</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MULTI-PAGE SPA NAVIGATION BAR -->
+        <nav class="max-w-7xl mx-auto px-4 py-2.5">
+            <div class="flex items-center justify-between lg:justify-center">
+                
+                <span class="lg:hidden font-heading text-lg font-bold text-brand-gold cursor-pointer" onclick="switchTab('home')">SOUTHPOLE</span>
+
+                <!-- Desktop Nav Links (Instant SPA Tab Switchers) -->
+                <div class="hidden lg:flex items-center justify-center gap-8 xl:gap-10 font-semibold text-xs xl:text-sm tracking-wider uppercase">
+                    <button onclick="switchTab('home')" id="nav-home" class="nav-tab py-1 text-brand-gold border-b-2 border-brand-gold transition-all duration-300">
+                        Home
+                    </button>
+                    <button onclick="switchTab('fleet')" id="nav-fleet" class="nav-tab py-1 text-gray-300 hover:text-brand-gold border-b-2 border-transparent transition-all duration-300">
+                        Fleet Gallery
+                    </button>
+                    <button onclick="switchTab('services')" id="nav-services" class="nav-tab py-1 text-gray-300 hover:text-brand-gold border-b-2 border-transparent transition-all duration-300">
+                        Services & Security
+                    </button>
+                    <button onclick="switchTab('wizard')" id="nav-wizard" class="nav-tab py-1 text-gray-300 hover:text-brand-gold border-b-2 border-transparent transition-all duration-300 flex items-center gap-1.5">
+                        <i class="fa-solid fa-wand-magic-sparkles text-brand-gold"></i> Booking Wizard
+                    </button>
+                    <button onclick="switchTab('corporate')" id="nav-corporate" class="nav-tab py-1 text-gray-300 hover:text-brand-gold border-b-2 border-transparent transition-all duration-300">
+                        Corporate Portal
+                    </button>
+                    <button onclick="switchTab('faq')" id="nav-faq" class="nav-tab py-1 text-gray-300 hover:text-brand-gold border-b-2 border-transparent transition-all duration-300">
+                        FAQs
+                    </button>
+                    <button onclick="switchTab('about')" id="nav-about" class="nav-tab py-1 text-gray-300 hover:text-brand-gold border-b-2 border-transparent transition-all duration-300">
+                        About Us
+                    </button>
+                    <button onclick="switchTab('contact')" id="nav-contact" class="nav-tab py-1 text-gray-300 hover:text-brand-gold border-b-2 border-transparent transition-all duration-300">
+                        Contact Us
+                    </button>
+                </div>
+
+                <!-- Action Button on Nav Right -->
+                <div class="hidden lg:block absolute right-6">
+                    <button onclick="switchTab('wizard')" class="bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-extrabold px-4 py-2 rounded-lg hover:shadow-lg hover:shadow-brand-gold/30 hover:scale-105 transition-all duration-300 text-xs tracking-wider uppercase">
+                        Get Instant Quote
+                    </button>
+                </div>
+
+                <!-- Mobile Navigation Menu Toggle -->
+                <button id="mobile-menu-btn" class="lg:hidden text-brand-gold text-2xl focus:outline-none p-2" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars" id="menu-icon"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Drawer -->
+            <div id="mobile-menu" class="hidden lg:hidden flex-col gap-3 pt-3 pb-2 border-t border-gray-800 mt-2 text-center">
+                <button onclick="switchTab('home'); toggleMobileMenu()" class="py-2 text-brand-gold font-semibold uppercase tracking-wider text-sm">Home</button>
+                <button onclick="switchTab('fleet'); toggleMobileMenu()" class="py-2 text-gray-300 hover:text-brand-gold uppercase tracking-wider text-sm">Fleet Gallery</button>
+                <button onclick="switchTab('services'); toggleMobileMenu()" class="py-2 text-gray-300 hover:text-brand-gold uppercase tracking-wider text-sm">Services & Security</button>
+                <button onclick="switchTab('wizard'); toggleMobileMenu()" class="py-2 text-gray-300 hover:text-brand-gold uppercase tracking-wider text-sm">Booking Wizard</button>
+                <button onclick="switchTab('corporate'); toggleMobileMenu()" class="py-2 text-gray-300 hover:text-brand-gold uppercase tracking-wider text-sm">Corporate Portal</button>
+                <button onclick="switchTab('faq'); toggleMobileMenu()" class="py-2 text-gray-300 hover:text-brand-gold uppercase tracking-wider text-sm">FAQs</button>
+                <button onclick="switchTab('about'); toggleMobileMenu()" class="py-2 text-gray-300 hover:text-brand-gold uppercase tracking-wider text-sm">About Us</button>
+                <button onclick="switchTab('contact'); toggleMobileMenu()" class="py-2 text-gray-300 hover:text-brand-gold uppercase tracking-wider text-sm">Contact Us</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER WITH SPA PAGE SECTIONS -->
+    <main class="flex-grow">
+
+        <!-- ================= PAGE 1: HOME ================= -->
+        <section id="page-home" class="page-section active-section">
+            
+            <!-- HERO BANNER -->
+            <div class="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-cover bg-center px-6 py-16" style="background-image: linear-gradient(to bottom, rgba(8, 10, 14, 0.75), rgba(8, 10, 14, 0.95)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1920&q=80');">
+                <div class="relative max-w-5xl mx-auto text-center z-10">
+                    
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/40 text-brand-gold font-semibold text-xs uppercase tracking-widest mb-6 backdrop-blur-md">
+                        <i class="fa-solid fa-crown text-brand-gold"></i> Premium Mobility & Logistics Specialist
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl md:text-7xl font-black text-white leading-tight mb-6 uppercase tracking-tight">
+                        Southpole <span class="gold-gradient-text">Autos</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-2xl text-gray-200 max-w-3xl mx-auto mb-8 font-light leading-relaxed">
+                        Premium Logistics & All-Round Mobility Solutions.
+                    </p>
+
+                    <!-- Trust Tagline -->
+                    <p class="text-xs sm:text-sm text-brand-gold font-medium mb-10 tracking-widest uppercase">
+                        Registered in Nigeria — RC: 6944368
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button onclick="switchTab('wizard')" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-extrabold rounded-xl shadow-xl hover:shadow-brand-gold/40 hover:scale-105 transition-all text-sm tracking-wider uppercase flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-car"></i> Book a Ride Now
+                        </button>
+                        <button onclick="switchTab('wizard')" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl border border-white/20 backdrop-blur-md hover:border-brand-gold transition-all text-sm tracking-wider uppercase flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-file-invoice-dollar text-brand-gold"></i> Get a Instant Quote
+                        </button>
+                    </div>
+
+                    <!-- Highlighted Quick Stats -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-10 border-t border-white/10 text-center">
+                        <div class="bg-black/40 p-4 rounded-xl border border-white/5">
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-gold">100%</h3>
+                            <p class="text-xs uppercase tracking-wider text-gray-300 mt-1">RC Registered (6944368)</p>
+                        </div>
+                        <div class="bg-black/40 p-4 rounded-xl border border-white/5">
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-gold">B6 / B7</h3>
+                            <p class="text-xs uppercase tracking-wider text-gray-300 mt-1">Armored SUV Ratings</p>
+                        </div>
+                        <div class="bg-black/40 p-4 rounded-xl border border-white/5">
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-gold">24/7</h3>
+                            <p class="text-xs uppercase tracking-wider text-gray-300 mt-1">Omagwa Airport Pickups</p>
+                        </div>
+                        <div class="bg-black/40 p-4 rounded-xl border border-white/5">
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-gold">Nationwide</h3>
+                            <p class="text-xs uppercase tracking-wider text-gray-300 mt-1">Inter-State Convoy Escorts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEATURED FLEET PREVIEW ON HOME PAGE -->
+            <div class="py-16 max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-end justify-between mb-10">
+                    <div>
+                        <span class="text-brand-gold font-bold text-xs uppercase tracking-widest">Our Royal Collection</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Featured Executive Fleet</h2>
+                    </div>
+                    <button onclick="switchTab('fleet')" class="mt-4 md:mt-0 text-brand-gold hover:underline text-sm font-semibold flex items-center gap-2">
+                        View Full Fleet Gallery <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Featured Car 1 -->
+                    <div class="bg-brand-cardBg rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-gold/60 transition-all group shadow-xl">
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?auto=format&fit=crop&w=800&q=80" alt="Armored G-Wagon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                                B6 Armored SUV
+                            </span>
+                            <span class="absolute top-3 right-3 bg-brand-gold text-black text-[10px] font-black px-2 py-1 rounded-full uppercase">
+                                Chauffeur Included
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Mercedes G63 AMG Armored</h3>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-white/5 border border-white/10 text-gray-300 text-xs px-2.5 py-1 rounded-md">B6 Bulletproof</span>
+                                <span class="bg-white/5 border border-white/10 text-gray-300 text-xs px-2.5 py-1 rounded-md">5-Seater</span>
+                                <span class="bg-white/5 border border-white/10 text-gray-300 text-xs px-2.5 py-1 rounded-md">Escort Ready</span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-gray-800 pt-4">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block uppercase">Daily Rate</span>
+                                    <span class="text-lg font-bold text-brand-gold">₦850,000 <span class="text-xs font-normal text-gray-400">/ day</span></span>
+                                </div>
+                                <button onclick="startWizardWithVehicle('Mercedes G63 AMG Armored')" class="bg-brand-gold text-black font-extrabold text-xs px-4 py-2 rounded-lg uppercase tracking-wider hover:bg-white transition-colors">
+                                    Reserve
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Car 2 -->
+                    <div class="bg-brand-cardBg rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-gold/60 transition-all group shadow-xl">
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Mercedes Maybach S-Class" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-brand-gold text-black text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                                Luxury Sedan
+                            </span>
+                            <span class="absolute top-3 right-3 bg-brand-gold text-black text-[10px] font-black px-2 py-1 rounded-full uppercase">
+                                Chauffeur Included
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Mercedes-Maybach S680</h3>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-white/5 border border-white/10 text-gray-300 text-xs px-2.5 py-1 rounded-md">Executive Class</span>
+                                <span class="bg-white/5 border border-white/10 text-gray-300 text-xs px-2.5 py-1 rounded-md">4-Seater</span>
+                                <span class="bg-white/5 border border-white/10 text-gray-300 text-xs px-2.5 py-1 rounded-md">VIP Massaging Seats</span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-gray-800 pt-4">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block uppercase">Daily Rate</span>
+                                    <span class="text-lg font-bold text-brand-gold">₦450,000 <span class="text-xs font-normal text-gray-400">/ day</span></span>
+                                </div>
+                                <button onclick="startWizardWithVehicle('Mercedes-Maybach S680')" class="bg-brand-gold text-black font-extrabold text-xs px-4 py-2 rounded-lg uppercase tracking-wider hover:bg-white transition-colors">
+                                    Reserve
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Car 3 -->
+                    <div class="bg-brand-cardBg rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-gold/60 transition-all group shadow-xl">
+                        <div class="relative h-60 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="Bulletproof Sprinter Bus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-cyan-500 text-black text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                                Armored Bus / Jet Van
+                            </span>
+                            <span class="absolute top-3 right-3 bg-brand-gold text-black text-[10px] font-black px-2 py-1 rounded-full uppercase">
+                                Chauffeur Included
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2">Mercedes Sprinter VIP Jet Class</h3>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-white/5 border border-white/10 text-gray-300 text-xs px-2.5 py-1 rounded-md">B6 Armored Option</span>
+                                <span class="bg-white/5 border border-white/10 text-gray-300 text-xs px-2.5 py-1 rounded-md">10-14 Seater</span>
+                                <span class="bg-white/5 border border-white/10 text-gray-300 text-xs px-2.5 py-1 rounded-md">Satellite TV & Bar</span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-gray-800 pt-4">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block uppercase">Daily Rate</span>
+                                    <span class="text-lg font-bold text-brand-gold">₦650,000 <span class="text-xs font-normal text-gray-400">/ day</span></span>
+                                </div>
+                                <button onclick="startWizardWithVehicle('Mercedes Sprinter VIP Jet Class')" class="bg-brand-gold text-black font-extrabold text-xs px-4 py-2 rounded-lg uppercase tracking-wider hover:bg-white transition-colors">
+                                    Reserve
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REAL-TIME GOOGLE REVIEWS SLIDER SECTION -->
+            <div class="py-16 bg-black/60 border-y border-gray-800">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center max-w-2xl mx-auto mb-12">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 mb-2">
+                            <i class="fa-brands fa-google text-red-500"></i> Verified Google Business Ratings
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">Client Testimonials & Ratings</h2>
+                        <div class="flex items-center justify-center gap-1 text-brand-gold mt-2 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-white font-bold ml-2">4.9 / 5.0 (120+ Reviews)</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Review Card 1 -->
+                        <div class="bg-brand-cardBg p-6 rounded-2xl border border-gray-800 relative">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold font-bold flex items-center justify-center text-sm">
+                                        CE
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Chief Emmanuel O.</h4>
+                                        <span class="text-[10px] text-gray-400">Port Harcourt VIP Client</span>
+                                    </div>
+                                </div>
+                                <i class="fa-brands fa-google text-gray-600 text-xl"></i>
+                            </div>
+                            <div class="text-brand-gold text-xs mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-xs text-gray-300 leading-relaxed italic">
+                                "Flawless airport pickup at Omagwa International. The bulletproof G-Wagon and armed escort team made my movement across Rivers State completely seamless. Outstanding service!"
+                            </p>
+                        </div>
+
+                        <!-- Review Card 2 -->
+                        <div class="bg-brand-cardBg p-6 rounded-2xl border border-gray-800 relative">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold font-bold flex items-center justify-center text-sm">
+                                        AO
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Adebayo & Associates</h4>
+                                        <span class="text-[10px] text-gray-400">Corporate Fleet Manager</span>
+                                    </div>
+                                </div>
+                                <i class="fa-brands fa-google text-gray-600 text-xl"></i>
+                            </div>
+                            <div class="text-brand-gold text-xs mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-xs text-gray-300 leading-relaxed italic">
+                                "Southpole Autos managed our corporate summit logistics in Port Harcourt with 12 luxury sedans and escort vans. Highly dependable team under RC 6944368."
+                            </p>
+                        </div>
+
+                        <!-- Review Card 3 -->
+                        <div class="bg-brand-cardBg p-6 rounded-2xl border border-gray-800 relative">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-brand-gold/20 text-brand-gold font-bold flex items-center justify-center text-sm">
+                                        DR
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-bold text-white">Dr. Reginald K.</h4>
+                                        <span class="text-[10px] text-gray-400">Private Jet Charter User</span>
+                                    </div>
+                                </div>
+                                <i class="fa-brands fa-google text-gray-600 text-xl"></i>
+                            </div>
+                            <div class="text-brand-gold text-xs mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-xs text-gray-300 leading-relaxed italic">
+                                "Booked a last-minute jet charter to Abuja alongside ground convoy pickup. Southpole Autos handled tarmac clearance and protocol smoothly."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: FLEET GALLERY ================= -->
+        <section id="page-fleet" class="page-section">
+            <div class="py-12 max-w-7xl mx-auto px-6">
+                
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="text-brand-gold font-bold text-xs uppercase tracking-widest">Complete Fleet Inventory</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Interactive Fleet Showcase</h2>
+                    <p class="text-sm text-gray-400 mt-2">Filter by category to explore our verified luxury, armored, and logistics vehicles.</p>
+                </div>
+
+                <!-- FLEET CATEGORY TABS FILTER -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
+                    <button onclick="filterFleet('all')" class="fleet-filter-btn active bg-brand-gold text-black font-extrabold text-xs px-4 py-2.5 rounded-full uppercase tracking-wider transition-all">
+                        All Vehicles
+                    </button>
+                    <button onclick="filterFleet('armored')" class="fleet-filter-btn bg-white/5 border border-white/10 text-gray-300 hover:text-brand-gold font-semibold text-xs px-4 py-2.5 rounded-full uppercase tracking-wider transition-all">
+                        Bulletproof SUVs
+                    </button>
+                    <button onclick="filterFleet('sedan')" class="fleet-filter-btn bg-white/5 border border-white/10 text-gray-300 hover:text-brand-gold font-semibold text-xs px-4 py-2.5 rounded-full uppercase tracking-wider transition-all">
+                        Luxury Sedans
+                    </button>
+                    <button onclick="filterFleet('bus')" class="fleet-filter-btn bg-white/5 border border-white/10 text-gray-300 hover:text-brand-gold font-semibold text-xs px-4 py-2.5 rounded-full uppercase tracking-wider transition-all">
+                        Armored Buses
+                    </button>
+                    <button onclick="filterFleet('truck')" class="fleet-filter-btn bg-white/5 border border-white/10 text-gray-300 hover:text-brand-gold font-semibold text-xs px-4 py-2.5 rounded-full uppercase tracking-wider transition-all">
+                        Moving & Logistics Trucks
+                    </button>
+                    <button onclick="filterFleet('escort')" class="fleet-filter-btn bg-white/5 border border-white/10 text-gray-300 hover:text-brand-gold font-semibold text-xs px-4 py-2.5 rounded-full uppercase tracking-wider transition-all">
+                        VIP Security Chase Cars
+                    </button>
+                </div>
+
+                <!-- FLEET CARDS GRID WITH REAL CAR IMAGES & SPECS -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Car 1: G-Wagon Armored -->
+                    <div class="fleet-item armored escort bg-brand-cardBg rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-gold/60 transition-all shadow-xl">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?auto=format&fit=crop&w=800&q=80" alt="G63 AMG" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase">B6/B7 Armored</span>
+                            <span class="absolute top-3 right-3 bg-brand-gold text-black text-[10px] font-black px-2 py-1 rounded-full uppercase">Chauffeur Included</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Mercedes-Benz G63 AMG Armored</h3>
+                            <p class="text-xs text-gray-400 mb-4">High-protection B6 bulletproof glass & run-flat tyres for VIP security transit.</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-black/60 text-brand-gold border border-brand-gold/30 text-[11px] font-semibold px-2.5 py-1 rounded-md"><i class="fa-solid fa-user-shield mr-1"></i> B6/B7 Armored</span>
+                                <span class="bg-black/60 text-gray-300 border border-white/10 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-users mr-1"></i> 5-Seater</span>
+                                <span class="bg-black/60 text-gray-300 border border-white/10 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-user-tie mr-1"></i> Chauffeur Included</span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-gray-800 pt-4">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block uppercase">Daily Rental</span>
+                                    <span class="text-xl font-extrabold text-brand-gold">₦850,000 <span class="text-xs font-normal text-gray-400">/ day</span></span>
+                                </div>
+                                <button onclick="startWizardWithVehicle('Mercedes-Benz G63 AMG Armored')" class="bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-extrabold text-xs px-4 py-2.5 rounded-lg uppercase tracking-wider hover:scale-105 transition-all">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Car 2: Toyota Land Cruiser LC300 Armored -->
+                    <div class="fleet-item armored escort bg-brand-cardBg rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-gold/60 transition-all shadow-xl">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80" alt="LC300 Armored" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase">B6 Armored</span>
+                            <span class="absolute top-3 right-3 bg-brand-gold text-black text-[10px] font-black px-2 py-1 rounded-full uppercase">Chauffeur Included</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Toyota Land Cruiser LC300 Armored</h3>
+                            <p class="text-xs text-gray-400 mb-4">The ultimate inter-state convoy vehicle designed for rugged Nigerian roads and high security.</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-black/60 text-brand-gold border border-brand-gold/30 text-[11px] font-semibold px-2.5 py-1 rounded-md"><i class="fa-solid fa-shield-halved mr-1"></i> B6 Armored</span>
+                                <span class="bg-black/60 text-gray-300 border border-white/10 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-users mr-1"></i> 7-Seater</span>
+                                <span class="bg-black/60 text-gray-300 border border-white/10 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-user-tie mr-1"></i> Chauffeur Included</span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-gray-800 pt-4">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block uppercase">Daily Rental</span>
+                                    <span class="text-xl font-extrabold text-brand-gold">₦650,000 <span class="text-xs font-normal text-gray-400">/ day</span></span>
+                                </div>
+                                <button onclick="startWizardWithVehicle('Toyota Land Cruiser LC300 Armored')" class="bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-extrabold text-xs px-4 py-2.5 rounded-lg uppercase tracking-wider hover:scale-105 transition-all">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Car 3: Maybach S680 -->
+                    <div class="fleet-item sedan bg-brand-cardBg rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-gold/60 transition-all shadow-xl">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Maybach" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-brand-gold text-black text-[10px] font-black px-2.5 py-1 rounded-full uppercase">Luxury Sedan</span>
+                            <span class="absolute top-3 right-3 bg-brand-gold text-black text-[10px] font-black px-2 py-1 rounded-full uppercase">Chauffeur Included</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Mercedes-Maybach S680</h3>
+                            <p class="text-xs text-gray-400 mb-4">Unmatched luxury rear cabin, massaging seats, and executive presence for ceremonial events.</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-black/60 text-gray-300 border border-white/10 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-crown mr-1"></i> Executive First Class</span>
+                                <span class="bg-black/60 text-gray-300 border border-white/10 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-users mr-1"></i> 4-Seater</span>
+                                <span class="bg-black/60 text-gray-300 border border-white/10 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-user-tie mr-1"></i> Chauffeur Included</span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-gray-800 pt-4">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block uppercase">Daily Rental</span>
+                                    <span class="text-xl font-extrabold text-brand-gold">₦450,000 <span class="text-xs font-normal text-gray-400">/ day</span></span>
+                                </div>
+                                <button onclick="startWizardWithVehicle('Mercedes-Maybach S680')" class="bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-extrabold text-xs px-4 py-2.5 rounded-lg uppercase tracking-wider hover:scale-105 transition-all">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Car 4: Bulletproof VIP Jet Sprinter -->
+                    <div class="fleet-item bus armored bg-brand-cardBg rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-gold/60 transition-all shadow-xl">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="VIP Sprinter" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-cyan-500 text-black text-[10px] font-black px-2.5 py-1 rounded-full uppercase">Armored Bus</span>
+                            <span class="absolute top-3 right-3 bg-brand-gold text-black text-[10px] font-black px-2 py-1 rounded-full uppercase">Chauffeur Included</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Mercedes Sprinter Armored Jet Class</h3>
+                            <p class="text-xs text-gray-400 mb-4">Custom interior with recliner jet seats, satellite TV, wireless Wi-Fi, and B6 armoring options.</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-black/60 text-cyan-400 border border-cyan-500/30 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-van-shuttle mr-1"></i> B6 Armored Option</span>
+                                <span class="bg-black/60 text-gray-300 border border-white/10 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-users mr-1"></i> 10-14 Seater</span>
+                                <span class="bg-black/60 text-gray-300 border border-white/10 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-wifi mr-1"></i> VIP Lounge</span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-gray-800 pt-4">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block uppercase">Daily Rental</span>
+                                    <span class="text-xl font-extrabold text-brand-gold">₦650,000 <span class="text-xs font-normal text-gray-400">/ day</span></span>
+                                </div>
+                                <button onclick="startWizardWithVehicle('Mercedes Sprinter Armored Jet Class')" class="bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-extrabold text-xs px-4 py-2.5 rounded-lg uppercase tracking-wider hover:scale-105 transition-all">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Car 5: Heavy Duty Moving & Logistics Truck -->
+                    <div class="fleet-item truck bg-brand-cardBg rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-gold/60 transition-all shadow-xl">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80" alt="Logistics Truck" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-emerald-500 text-black text-[10px] font-black px-2.5 py-1 rounded-full uppercase">Moving Truck</span>
+                            <span class="absolute top-3 right-3 bg-brand-gold text-black text-[10px] font-black px-2 py-1 rounded-full uppercase">Driver Included</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Heavy Duty Moving & Logistics Truck</h3>
+                            <p class="text-xs text-gray-400 mb-4">Professional residential and corporate relocation truck with handling crew and security lock options.</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-black/60 text-emerald-400 border border-emerald-500/30 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-truck-ramp-box mr-1"></i> Relocation Cargo</span>
+                                <span class="bg-black/60 text-gray-300 border border-white/10 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-boxes-packing mr-1"></i> Crew Provided</span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-gray-800 pt-4">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block uppercase">Daily / Trip Rate</span>
+                                    <span class="text-xl font-extrabold text-brand-gold">₦250,000 <span class="text-xs font-normal text-gray-400">/ trip</span></span>
+                                </div>
+                                <button onclick="startWizardWithVehicle('Heavy Duty Relocation Truck')" class="bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-extrabold text-xs px-4 py-2.5 rounded-lg uppercase tracking-wider hover:scale-105 transition-all">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Car 6: Tactical Escort Pickup Truck -->
+                    <div class="fleet-item escort bg-brand-cardBg rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-gold/60 transition-all shadow-xl">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80" alt="Escort Patrol" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-amber-500 text-black text-[10px] font-black px-2.5 py-1 rounded-full uppercase">Security Patrol</span>
+                            <span class="absolute top-3 right-3 bg-brand-gold text-black text-[10px] font-black px-2 py-1 rounded-full uppercase">Armed Escort Ready</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Toyota Hilux Tactical Escort Pickup</h3>
+                            <p class="text-xs text-gray-400 mb-4">Equipped with strobe lights, siren systems, and trained security personnel for convoy escort.</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-black/60 text-amber-400 border border-amber-500/30 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-shield-cat mr-1"></i> Armed Escort</span>
+                                <span class="bg-black/60 text-gray-300 border border-white/10 text-[11px] px-2.5 py-1 rounded-md"><i class="fa-solid fa-road mr-1"></i> Convoy Lead</span>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-gray-800 pt-4">
+                                <div>
+                                    <span class="text-[10px] text-gray-400 block uppercase">Daily Rate</span>
+                                    <span class="text-xl font-extrabold text-brand-gold">₦350,000 <span class="text-xs font-normal text-gray-400">/ day</span></span>
+                                </div>
+                                <button onclick="startWizardWithVehicle('Toyota Hilux Tactical Escort Pickup')" class="bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-extrabold text-xs px-4 py-2.5 rounded-lg uppercase tracking-wider hover:scale-105 transition-all">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: SERVICES & SECURITY ================= -->
+        <section id="page-services" class="page-section">
+            <div class="py-12 max-w-7xl mx-auto px-6">
+                
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="text-brand-gold font-bold text-xs uppercase tracking-widest">Bespoke Logistics</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-2">Services & VIP Security Credentials</h2>
+                    <div class="w-24 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- SECURITY & PROTOCOL OVERVIEW SECTION -->
+                <div class="mb-16 bg-gradient-to-br from-brand-cardBg to-black p-8 sm:p-12 rounded-3xl border border-brand-gold/40 shadow-2xl relative overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/60 border border-red-500/40 text-red-400 text-xs font-bold uppercase mb-4">
+                                <i class="fa-solid fa-shield-halved"></i> VIP Security & Protocol Standards
+                            </div>
+                            <h3 class="text-2xl sm:text-4xl font-extrabold text-white mb-4">
+                                Uncompromised Safety Across Rivers State & Nigeria
+                            </h3>
+                            <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                                At Southpole Autos, security is integrated into every luxury journey. Operating under <span class="text-brand-gold font-bold">RC: 6944368</span>, we coordinate directly with accredited security personnel to ensure high-net-worth individuals, executives, and visiting dignitaries are fully protected.
+                            </p>
+                            
+                            <ul class="space-y-3 text-xs sm:text-sm text-gray-200 mb-8">
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-circle-check text-brand-gold"></i>
+                                    <span><strong>Trained Security Drivers:</strong> Defensive driving certified chauffeurs.</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-circle-check text-brand-gold"></i>
+                                    <span><strong>Armed Escort Coordination:</strong> Mobile armed chase teams for inter-state transit.</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-circle-check text-brand-gold"></i>
+                                    <span><strong>Certified B6 & B7 Armoring:</strong> Bulletproof glass, reinforced floors, & run-flats.</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-circle-check text-brand-gold"></i>
+                                    <span><strong>Omagwa Airport VIP Protocol:</strong> Direct tarmac greeting and baggage escort.</span>
+                                </li>
+                            </ul>
+
+                            <button onclick="switchTab('wizard')" class="bg-brand-gold text-black font-extrabold px-6 py-3 rounded-xl uppercase text-xs tracking-wider hover:bg-white transition-colors">
+                                Request Security Escort Service
+                            </button>
+                        </div>
+
+                        <div class="relative h-80 rounded-2xl overflow-hidden border border-gray-700 shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" alt="Private Jet & Escort" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 p-4 bg-black/80 backdrop-blur-md rounded-xl border border-white/10">
+                                <h4 class="text-xs font-bold text-brand-gold uppercase">Private Jet Charter & Ground Protocol</h4>
+                                <p class="text-[11px] text-gray-300 mt-1">Seamless transition from private aviation tarmac directly into bulletproof convoy vehicles.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7 CORE SERVICES GRID -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="bg-brand-cardBg p-8 rounded-2xl border border-gray-800 hover:border-brand-gold/50 transition-all">
+                        <div class="w-14 h-14 bg-brand-gold/10 text-brand-gold rounded-2xl flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-car"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Car Sales & Hire</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Luxury sedans, SUVs, and everyday vehicles available for short-term/long-term rental or verified vehicle purchase.
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-cardBg p-8 rounded-2xl border border-gray-800 hover:border-brand-gold/50 transition-all">
+                        <div class="w-14 h-14 bg-brand-gold/10 text-brand-gold rounded-2xl flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Convoy Escort & Security</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Highly secure, professional escort services for VIPs, corporate executives, and high-profile movements nationwide.
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-cardBg p-8 rounded-2xl border border-gray-800 hover:border-brand-gold/50 transition-all">
+                        <div class="w-14 h-14 bg-brand-gold/10 text-brand-gold rounded-2xl flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Private Jet Charter & Booking</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Premium luxury aviation arrangements for elite, time-sensitive corporate and private travel needs.
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-cardBg p-8 rounded-2xl border border-gray-800 hover:border-brand-gold/50 transition-all">
+                        <div class="w-14 h-14 bg-brand-gold/10 text-brand-gold rounded-2xl flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Fleet Management</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Comprehensive operational management for corporate vehicle fleets to optimize efficiency and reduce overhead.
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-cardBg p-8 rounded-2xl border border-gray-800 hover:border-brand-gold/50 transition-all">
+                        <div class="w-14 h-14 bg-brand-gold/10 text-brand-gold rounded-2xl flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Event Logistics</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            End-to-end transport coordination and crowd/vehicle management for large-scale corporate summits and political rallies.
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-cardBg p-8 rounded-2xl border border-gray-800 hover:border-brand-gold/50 transition-all">
+                        <div class="w-14 h-14 bg-brand-gold/10 text-brand-gold rounded-2xl flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Wedding & Ceremonial Fleets</h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Premium ceremonial vehicle fleets to add elegance, dignity, and class to your special events.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: MULTI-STEP BOOKING WIZARD ================= -->
+        <section id="page-wizard" class="page-section">
+            <div class="py-12 max-w-4xl mx-auto px-6">
+                
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-brand-gold font-bold text-xs uppercase tracking-widest">Instant Reservation</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Multi-Step Booking Wizard</h2>
+                    <p class="text-xs text-gray-400 mt-2">Fill in your requirements below to generate an instant WhatsApp quote summary.</p>
+                </div>
+
+                <!-- WIZARD STEP PROGRESS BAR -->
+                <div class="bg-brand-cardBg p-6 rounded-3xl border border-brand-gold/30 shadow-2xl">
+                    <div class="flex items-center justify-between mb-8 px-2 relative">
+                        <div class="w-full bg-gray-800 h-1 absolute top-1/2 left-0 right-0 -translate-y-1/2 z-0"></div>
+                        <div id="step-line" class="bg-brand-gold h-1 absolute top-1/2 left-0 -translate-y-1/2 z-0 transition-all duration-300 w-1/4"></div>
+
+                        <div class="relative z-10 text-center">
+                            <div id="step-circle-1" class="w-10 h-10 rounded-full bg-brand-gold text-black font-bold flex items-center justify-center text-sm mx-auto shadow-lg">1</div>
+                            <span class="text-[10px] text-brand-gold uppercase font-bold mt-1 block">Service</span>
+                        </div>
+                        <div class="relative z-10 text-center">
+                            <div id="step-circle-2" class="w-10 h-10 rounded-full bg-gray-800 text-gray-400 font-bold flex items-center justify-center text-sm mx-auto">2</div>
+                            <span class="text-[10px] text-gray-400 uppercase font-bold mt-1 block">Vehicle</span>
+                        </div>
+                        <div class="relative z-10 text-center">
+                            <div id="step-circle-3" class="w-10 h-10 rounded-full bg-gray-800 text-gray-400 font-bold flex items-center justify-center text-sm mx-auto">3</div>
+                            <span class="text-[10px] text-gray-400 uppercase font-bold mt-1 block">Dates & Escort</span>
+                        </div>
+                        <div class="relative z-10 text-center">
+                            <div id="step-circle-4" class="w-10 h-10 rounded-full bg-gray-800 text-gray-400 font-bold flex items-center justify-center text-sm mx-auto">4</div>
+                            <span class="text-[10px] text-gray-400 uppercase font-bold mt-1 block">Confirm</span>
+                        </div>
+                    </div>
+
+                    <!-- STEP FORM PANELS -->
+                    <form id="wizard-form" onsubmit="generateWhatsAppQuote(event)">
+                        
+                        <!-- STEP 1: SERVICE TYPE -->
+                        <div id="wizard-step-1" class="wizard-step">
+                            <h3 class="text-lg font-bold text-white mb-4">Step 1: Select Your Service Type</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                                <label class="border border-gray-700 bg-black/40 p-4 rounded-xl cursor-pointer hover:border-brand-gold flex items-center gap-3">
+                                    <input type="radio" name="service_type" value="Car Hire / Rental" checked class="accent-brand-gold">
+                                    <div>
+                                        <span class="text-sm font-bold text-white block">Car Hire & Rental</span>
+                                        <span class="text-[11px] text-gray-400">Luxury sedans, SUVs, and chauffeur rental</span>
+                                    </div>
+                                </label>
+                                <label class="border border-gray-700 bg-black/40 p-4 rounded-xl cursor-pointer hover:border-brand-gold flex items-center gap-3">
+                                    <input type="radio" name="service_type" value="Convoy Escort & VIP Security" class="accent-brand-gold">
+                                    <div>
+                                        <span class="text-sm font-bold text-white block">Convoy Escort & VIP Security</span>
+                                        <span class="text-[11px] text-gray-400">Armed security chase trucks & protocol</span>
+                                    </div>
+                                </label>
+                                <label class="border border-gray-700 bg-black/40 p-4 rounded-xl cursor-pointer hover:border-brand-gold flex items-center gap-3">
+                                    <input type="radio" name="service_type" value="Private Jet Charter" class="accent-brand-gold">
+                                    <div>
+                                        <span class="text-sm font-bold text-white block">Private Jet Charter</span>
+                                        <span class="text-[11px] text-gray-400">VIP aviation charter & tarmac pickup</span>
+                                    </div>
+                                </label>
+                                <label class="border border-gray-700 bg-black/40 p-4 rounded-xl cursor-pointer hover:border-brand-gold flex items-center gap-3">
+                                    <input type="radio" name="service_type" value="Relocation & Moving Truck" class="accent-brand-gold">
+                                    <div>
+                                        <span class="text-sm font-bold text-white block">Relocation & Moving Truck</span>
+                                        <span class="text-[11px] text-gray-400">Residential & heavy logistics moving</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="flex justify-end">
+                                <button type="button" onclick="nextStep(2)" class="bg-brand-gold text-black font-extrabold px-6 py-3 rounded-xl uppercase text-xs tracking-wider">Next: Vehicle Selection <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: VEHICLE SELECTION -->
+                        <div id="wizard-step-2" class="wizard-step hidden">
+                            <h3 class="text-lg font-bold text-white mb-4">Step 2: Choose Preferred Vehicle</h3>
+                            <div class="space-y-4 mb-8">
+                                <div>
+                                    <label class="block text-xs uppercase font-bold text-gray-300 mb-2">Vehicle Model</label>
+                                    <select id="wizard-vehicle-select" class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold">
+                                        <option value="Mercedes-Benz G63 AMG Armored">Mercedes-Benz G63 AMG Armored (₦850,000/day)</option>
+                                        <option value="Toyota Land Cruiser LC300 Armored">Toyota Land Cruiser LC300 Armored (₦650,000/day)</option>
+                                        <option value="Mercedes-Maybach S680">Mercedes-Maybach S680 (₦450,000/day)</option>
+                                        <option value="Mercedes Sprinter Armored Jet Class">Mercedes Sprinter Armored Jet Class (₦650,000/day)</option>
+                                        <option value="Toyota Hilux Tactical Escort Pickup">Toyota Hilux Tactical Escort Pickup (₦350,000/day)</option>
+                                        <option value="Heavy Duty Relocation Truck">Heavy Duty Relocation Truck (₦250,000/trip)</option>
+                                        <option value="Private Jet Charter Request">Private Jet Charter (Custom Quote)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex justify-between">
+                                <button type="button" onclick="nextStep(1)" class="bg-gray-800 text-white font-bold px-6 py-3 rounded-xl text-xs uppercase"><i class="fa-solid fa-arrow-left mr-1"></i> Back</button>
+                                <button type="button" onclick="nextStep(3)" class="bg-brand-gold text-black font-extrabold px-6 py-3 rounded-xl uppercase text-xs tracking-wider">Next: Schedule & Location <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: DATES & SECURITY -->
+                        <div id="wizard-step-3" class="wizard-step hidden">
+                            <h3 class="text-lg font-bold text-white mb-4">Step 3: Dates, Pickup & Security Escort</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                                <div>
+                                    <label class="block text-xs uppercase font-bold text-gray-300 mb-2">Pickup Date</label>
+                                    <input type="date" id="wizard-date" required class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase font-bold text-gray-300 mb-2">Pickup Location (e.g., Omagwa Airport / PH)</label>
+                                    <input type="text" id="wizard-location" placeholder="e.g. Omagwa Airport, Port Harcourt" required class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold">
+                                </div>
+                            </div>
+                            <div class="mb-8">
+                                <label class="block text-xs uppercase font-bold text-gray-300 mb-2">Armed Security Escort Needed?</label>
+                                <select id="wizard-escort" class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold">
+                                    <option value="No - Standard Chauffeur Only">No - Standard Chauffeur Driver Only</option>
+                                    <option value="Yes - Armed Security Chase Vehicle">Yes - Armed Security Chase Vehicle & Personnel</option>
+                                    <option value="Yes - Full VIP Protocol & Tarmac Escort">Yes - Full VIP Airport Tarmac & Escort Protocol</option>
+                                </select>
+                            </div>
+                            <div class="flex justify-between">
+                                <button type="button" onclick="nextStep(2)" class="bg-gray-800 text-white font-bold px-6 py-3 rounded-xl text-xs uppercase"><i class="fa-solid fa-arrow-left mr-1"></i> Back</button>
+                                <button type="button" onclick="nextStep(4)" class="bg-brand-gold text-black font-extrabold px-6 py-3 rounded-xl uppercase text-xs tracking-wider">Next: Contact Info <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 4: CONTACT & INSTANT WHATSAPP GENERATOR -->
+                        <div id="wizard-step-4" class="wizard-step hidden">
+                            <h3 class="text-lg font-bold text-white mb-4">Step 4: Client Contact Details</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                                <div>
+                                    <label class="block text-xs uppercase font-bold text-gray-300 mb-2">Full Name</label>
+                                    <input type="text" id="wizard-name" placeholder="Chief / Dr. / Mr. Name" required class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase font-bold text-gray-300 mb-2">Phone / WhatsApp Number</label>
+                                    <input type="tel" id="wizard-phone" placeholder="+234 800 000 0000" required class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold">
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <button type="button" onclick="nextStep(3)" class="bg-gray-800 text-white font-bold px-6 py-3 rounded-xl text-xs uppercase"><i class="fa-solid fa-arrow-left mr-1"></i> Back</button>
+                                <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-black font-black px-8 py-3.5 rounded-xl uppercase text-xs tracking-wider shadow-lg flex items-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> Generate WhatsApp Quote
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= PAGE 5: CORPORATE CLIENT PORTAL ================= -->
+        <section id="page-corporate" class="page-section">
+            <div class="py-12 max-w-5xl mx-auto px-6">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-bold uppercase mb-2">
+                        <i class="fa-solid fa-building text-xs"></i> Enterprise & Government Logistics
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white">Corporate Client Portal</h2>
+                    <p class="text-sm text-gray-400 mt-2">Dedicated logistics contracts, long-term fleet leases, and event coordination for corporate account managers.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-brand-cardBg p-6 rounded-2xl border border-gray-800">
+                        <i class="fa-solid fa-file-contract text-brand-gold text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-white mb-2">Long-Term Leases</h3>
+                        <p class="text-xs text-gray-400">Discounted annual and quarterly fleet leases for oil & gas firms, embassies, and corporate executives.</p>
+                    </div>
+                    <div class="bg-brand-cardBg p-6 rounded-2xl border border-gray-800">
+                        <i class="fa-solid fa-truck-fleet text-brand-gold text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-white mb-2">Bulk Summit Logistics</h3>
+                        <p class="text-xs text-gray-400">Complete fleet management for political summits, corporate conferences, and high-security convoys.</p>
+                    </div>
+                    <div class="bg-brand-cardBg p-6 rounded-2xl border border-gray-800">
+                        <i class="fa-solid fa-shield-virus text-brand-gold text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-white mb-2">RC Certified Billing</h3>
+                        <p class="text-xs text-gray-400">Official tax invoices, VAT compliance, and corporate billing under Southpole Autos (RC: 6944368).</p>
+                    </div>
+                </div>
+
+                <!-- CORPORATE REQUEST FORM -->
+                <div class="bg-brand-cardBg p-8 sm:p-12 rounded-3xl border border-gray-800 shadow-2xl">
+                    <h3 class="text-xl font-bold text-white mb-6">Request Corporate Account / Bulk Lease Contract</h3>
+                    <form onsubmit="handleCorporateSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs uppercase font-bold text-gray-300 mb-2">Company / Organization Name</label>
+                                <input type="text" required placeholder="e.g. Shell Nigeria / Chevron Corp" class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-bold text-gray-300 mb-2">Official Corporate Email</label>
+                                <input type="email" required placeholder="procurement@company.com" class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-bold text-gray-300 mb-2">Estimated Vehicles Required</label>
+                                <select class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold">
+                                    <option>1 - 3 Luxury SUVs / Sedans</option>
+                                    <option>4 - 10 Executive Fleet Convoy</option>
+                                    <option>10+ Full Enterprise Event Logistics</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-bold text-gray-300 mb-2">Contract Duration</label>
+                                <select class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold">
+                                    <option>Single Event / Short-Term</option>
+                                    <option>1 Month - 6 Months Lease</option>
+                                    <option>1 Year Corporate Retainer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase font-bold text-gray-300 mb-2">Specific Requirements & Security Notes</label>
+                            <textarea rows="3" placeholder="Detail any armed escort requirements, bulletproof ratings, or route logistics..." class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-gold"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-brand-gold to-brand-goldDark text-black font-extrabold py-4 rounded-xl uppercase tracking-wider text-xs">
+                            Submit Corporate Account Proposal Request
+                        </button>
+                    </form>
+                    <div id="corporate-msg" class="hidden mt-4 p-4 rounded-xl bg-emerald-950/80 border border-emerald-500 text-emerald-200 text-center text-xs">
+                        <i class="fa-solid fa-circle-check text-emerald-400 mr-2"></i> Corporate proposal request submitted! Our enterprise account manager will reach out within 15 minutes.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= PAGE 6: FAQS ================= -->
+        <section id="page-faq" class="page-section">
+            <div class="py-12 max-w-4xl mx-auto px-6">
+                
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-brand-gold font-bold text-xs uppercase tracking-widest">Help Center</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-1">Frequently Asked Questions</h2>
+                    <p class="text-xs text-gray-400 mt-2">Clear answers regarding operations, security requirements, and booking policies.</p>
+                </div>
+
+                <!-- ACCORDION DROPDOWN CONTAINER -->
+                <div class="space-y-4">
+                    
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-brand-cardBg border border-gray-800 rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq(1)" class="w-full p-6 text-left flex items-center justify-between font-bold text-white hover:text-brand-gold transition-colors text-sm sm:text-base">
+                            <span>Do you offer self-drive options or is it chauffeur-only?</span>
+                            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-brand-gold transition-transform"></i>
+                        </button>
+                        <div id="faq-answer-1" class="hidden px-6 pb-6 text-xs sm:text-sm text-gray-300 leading-relaxed border-t border-gray-800/60 pt-4">
+                            All our luxury and armored vehicles are provided with highly trained, professional chauffeurs for security, maintenance, and liability compliance. For corporate clients seeking long-term self-drive leases, special vetting and security deposit requirements apply under corporate contract.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-brand-cardBg border border-gray-800 rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq(2)" class="w-full p-6 text-left flex items-center justify-between font-bold text-white hover:text-brand-gold transition-colors text-sm sm:text-base">
+                            <span>What are the requirements for renting a vehicle?</span>
+                            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-brand-gold transition-transform"></i>
+                        </button>
+                        <div id="faq-answer-2" class="hidden px-6 pb-6 text-xs sm:text-sm text-gray-300 leading-relaxed border-t border-gray-800/60 pt-4">
+                            Individual clients need to provide a valid Government ID (International Passport, Driver's License, or NIN), pickup/drop-off details, and advance booking confirmation. Corporate requests require official letterhead and RC verification.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-brand-cardBg border border-gray-800 rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq(3)" class="w-full p-6 text-left flex items-center justify-between font-bold text-white hover:text-brand-gold transition-colors text-sm sm:text-base">
+                            <span>How far in advance do we need to book a Private Jet Charter?</span>
+                            <i id="faq-icon-3" class="fa-solid fa-chevron-down text-brand-gold transition-transform"></i>
+                        </button>
+                        <div id="faq-answer-3" class="hidden px-6 pb-6 text-xs sm:text-sm text-gray-300 leading-relaxed border-t border-gray-800/60 pt-4">
+                            We recommend booking private jet charters at least 24 to 48 hours in advance to process tarmac security clearance, flight manifest filing, and VIP ground transfer logistics. Emergency charter requests can also be accommodated depending on aircraft availability.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-brand-cardBg border border-gray-800 rounded-2xl overflow-hidden">
+                        <button onclick="toggleFaq(4)" class="w-full p-6 text-left flex items-center justify-between font-bold text-white hover:text-brand-gold transition-colors text-sm sm:text-base">
+                            <span>Do you operate outside of Rivers State?</span>
+                            <i id="faq-icon-4" class="fa-solid fa-chevron-down text-brand-gold transition-transform"></i>
+                        </button>
+                        <div id="faq-answer-4" class="hidden px-6 pb-6 text-xs sm:text-sm text-gray-300 leading-relaxed border-t border-gray-800/60 pt-4">
+                            Yes! While our main operational base is located in Port Harcourt, Rivers State, Southpole Autos provides nationwide inter-state convoy escorts, luxury vehicle rentals, and logistics across Lagos, Abuja, Owerri, Uyo, Benin, and surrounding states.
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= PAGE 7: ABOUT US ================= -->
+        <section id="page-about" class="page-section">
+            <div class="py-12 max-w-5xl mx-auto px-6">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-brand-gold font-bold text-xs uppercase tracking-widest">Our Story & Mission</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-1">About Southpole Autos</h2>
+                    <div class="w-24 h-1 bg-brand-gold mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="bg-brand-cardBg p-8 sm:p-12 rounded-3xl border border-gray-800 shadow-2xl leading-relaxed text-gray-300 space-y-6 text-sm sm:text-base">
+                    <p class="text-lg font-medium text-white italic border-l-4 border-brand-gold pl-4">
+                        "At Southpole Autos, we provide seamless, dependable, and luxury-driven mobility solutions tailored to your personal and corporate needs. From premium wedding car hires to secure convoy escorts and heavy-duty logistics, we keep your world moving safely and efficiently."
+                    </p>
+
+                    <p>
+                        Headquartered in Port Harcourt, Rivers State, Nigeria, Southpole Autos is officially registered under <span class="text-brand-gold font-bold">RC: 6944368</span>. We have established ourselves as the premier choice for high-net-worth individuals, diplomatic missions, corporate executives, and international visitors requiring elite transit and security.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-gray-800">
+                        <div>
+                            <h4 class="text-white font-bold mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-shield text-brand-gold"></i> Security First Standards
+                            </h4>
+                            <p class="text-xs text-gray-400">
+                                Every armored vehicle in our fleet complies with international B6 and B7 protection standards, fitted with ballistic glass and heavy duty run-flat tires.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-clock text-brand-gold"></i> 24/7 Dispatch Readiness
+                            </h4>
+                            <p class="text-xs text-gray-400">
+                                Operations team active around the clock at Omagwa International Airport and Port Harcourt city centers for immediate vehicle deployment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= PAGE 8: CONTACT US ================= -->
+        <section id="page-contact" class="page-section">
+            <div class="py-12 max-w-5xl mx-auto px-6">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-brand-gold font-bold text-xs uppercase tracking-widest">Get In Touch</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-1">Contact Southpole Autos</h2>
+                    <p class="text-xs text-gray-400 mt-2">Reach out to our dispatch managers or visit our Port Harcourt office.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Contact Details -->
+                    <div class="bg-brand-cardBg p-8 rounded-3xl border border-gray-800 space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-gold/10 text-brand-gold rounded-xl flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase font-bold text-gray-400">Headquarters Location</h4>
+                                <p class="text-sm font-bold text-white mt-1">Port Harcourt, Rivers State, Nigeria</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-gold/10 text-brand-gold rounded-xl flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase font-bold text-gray-400">Phone & WhatsApp Direct</h4>
+                                <a href="https://wa.me/2349131466345?text=Hello%20Southpole%20Autos,%20I%20would%20like%20to%20inquire%20about%20your%20car%20rental%20and%20logistics%20services." target="_blank" class="text-sm font-bold text-brand-gold hover:underline mt-1 block">
+                                    +234 913 146 6345
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-brand-gold/10 text-brand-gold rounded-xl flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs uppercase font-bold text-gray-400">Corporate Email</h4>
+                                <a href="mailto:southpoleautos@gmail.com" class="text-sm font-bold text-white hover:text-brand-gold mt-1 block">
+                                    southpoleautos@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Social Handles -->
+                        <div class="pt-6 border-t border-gray-800">
+                            <h4 class="text-xs uppercase font-bold text-gray-400 mb-4">Official Social Media Handles</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://facebook.com/southpoleCarrentalNg" target="_blank" class="bg-white/5 hover:bg-brand-gold hover:text-black border border-white/10 text-gray-200 px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all">
+                                    <i class="fa-brands fa-facebook text-sm"></i> @southpoleCarrentalNg
+                                </a>
+                                <a href="https://instagram.com/southpole_car_rentals" target="_blank" class="bg-white/5 hover:bg-brand-gold hover:text-black border border-white/10 text-gray-200 px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all">
+                                    <i class="fa-brands fa-instagram text-sm"></i> @southpole_car_rentals
+                                </a>
+                                <a href="https://tiktok.com/@southpolecarrental" target="_blank" class="bg-white/5 hover:bg-brand-gold hover:text-black border border-white/10 text-gray-200 px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all">
+                                    <i class="fa-brands fa-tiktok text-sm"></i> @southpolecarrental
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Message Form -->
+                    <div class="bg-brand-cardBg p-8 rounded-3xl border border-gray-800">
+                        <h3 class="text-lg font-bold text-white mb-4">Send an Instant Inquiry</h3>
+                        <form onsubmit="handleDirectContact(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs uppercase font-bold text-gray-400 mb-1">Your Name</label>
+                                <input type="text" required class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-gold">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-bold text-gray-400 mb-1">Email or Phone</label>
+                                <input type="text" required class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-gold">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-bold text-gray-400 mb-1">Message</label>
+                                <textarea rows="4" required class="w-full bg-black/60 border border-gray-700 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-gold"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-gold text-black font-extrabold py-3 rounded-xl uppercase text-xs tracking-wider">
+                                Transmit Message
+                            </button>
+                        </form>
+                        <div id="contact-msg" class="hidden mt-3 p-3 rounded-xl bg-emerald-950/80 border border-emerald-500 text-emerald-200 text-center text-xs">
+                            Message received! Our team will reply shortly.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FIXED FLOATING WHATSAPP ACTION BUTTON -->
+    <a href="https://wa.me/2349131466345?text=Hello%20Southpole%20Autos,%20I%20would%20like%20to%20inquire%20about%20your%20car%20rental%20and%20logistics%20services." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-50 wa-float-btn w-14 h-14 bg-brand-waGreen text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform duration-300"
+       title="Chat with Southpole Autos on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- 24/7 AI HYBRID BOT WIDGET -->
+    <div id="ai-chat-box" class="fixed bottom-24 right-6 z-40 w-80 bg-brand-cardBg border border-brand-gold/40 rounded-2xl shadow-2xl overflow-hidden hidden">
+        <div class="bg-black p-3.5 border-b border-gray-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="text-xs font-bold text-brand-gold uppercase">Southpole AI Assistant</span>
+            </div>
+            <button onclick="toggleAiChat()" class="text-gray-400 hover:text-white text-xs"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="ai-messages" class="p-4 h-56 overflow-y-auto space-y-3 text-xs">
+            <div class="bg-white/5 p-2.5 rounded-lg border border-white/10 text-gray-300">
+                Hello! I am your Southpole Autos virtual assistant. How can I help you today regarding vehicle rentals, bulletproof SUVs, or jet charters?
+            </div>
+        </div>
+        <div class="p-3 bg-black/60 border-t border-gray-800 flex items-center gap-2">
+            <input type="text" id="ai-input" placeholder="Ask about prices, armor..." class="flex-grow bg-black border border-gray-700 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-brand-gold">
+            <button onclick="sendAiQuery()" class="bg-brand-gold text-black px-3 py-1.5 rounded-lg font-bold text-xs"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- AI CHAT TRIGGER BUTTON -->
+    <button onclick="toggleAiChat()" class="fixed bottom-6 right-24 z-40 bg-brand-cardBg border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-black px-4 py-3 rounded-full text-xs font-bold shadow-xl flex items-center gap-2 transition-all">
+        <i class="fa-solid fa-robot"></i> <span>24/7 AI Chat</span>
+    </button>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-black text-gray-400 border-t border-gray-800 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            
+            <div class="flex items-center justify-center gap-3 mb-3 cursor-pointer" onclick="switchTab('home')">
+                <i class="fa-solid fa-car-side text-2xl text-brand-gold"></i>
+                <h2 class="text-2xl font-extrabold gold-gradient-text uppercase">SOUTHPOLE AUTOS</h2>
+            </div>
+
+            <!-- GLOWING RC BADGE IN FOOTER -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full rc-glowing-badge border border-brand-gold text-brand-gold text-xs font-bold my-3">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Registered in Nigeria — RC: 6944368</span>
+            </div>
+
+            <p class="text-xs text-gray-400 mt-2">
+                Port Harcourt, Rivers State, Nigeria | Phone/WhatsApp: +234 913 146 6345 | Email: southpoleautos@gmail.com
+            </p>
+
+            <div class="flex items-center justify-center gap-6 my-6 text-base">
+                <a href="https://facebook.com/southpoleCarrentalNg" target="_blank" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://instagram.com/southpole_car_rentals" target="_blank" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://tiktok.com/@southpolecarrental" target="_blank" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://wa.me/2349131466345" target="_blank" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+
+            <p class="text-[11px] text-gray-600 border-t border-gray-900 pt-6">
+                © 2026 Southpole Autos Limited. All Rights Reserved. Corporate Registration RC: 6944368.
+            </p>
+
+        </div>
+    </footer>
+
+    <script>
+        // SPA MULTI-PAGE TAB SWITCHING FUNCTION (No Scrolling)
+        function switchTab(tabId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active-section'));
+
+            // Show selected section
+            const targetSection = document.getElementById('page-' + tabId);
+            if(targetSection) {
+                targetSection.classList.add('active-section');
+            }
+
+            // Update Nav Active State
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => {
+                tab.classList.remove('text-brand-gold', 'border-brand-gold');
+                tab.classList.add('text-gray-300', 'border-transparent');
+            });
+
+            const activeNav = document.getElementById('nav-' + tabId);
+            if(activeNav) {
+                activeNav.classList.remove('text-gray-300', 'border-transparent');
+                activeNav.classList.add('text-brand-gold', 'border-brand-gold');
+            }
+
+            // Reset scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
+        // Mobile Menu Controls
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            if(mobileMenu.classList.contains('flex')){
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+        }
+
+        // FLEET CATEGORY FILTER
+        function filterFleet(category) {
+            const items = document.querySelectorAll('.fleet-item');
+            const btns = document.querySelectorAll('.fleet-filter-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('bg-brand-gold', 'text-black', 'font-extrabold');
+                btn.classList.add('bg-white/5', 'text-gray-300');
+            });
+
+            event.target.classList.remove('bg-white/5', 'text-gray-300');
+            event.target.classList.add('bg-brand-gold', 'text-black', 'font-extrabold');
+
+            items.forEach(item => {
+                if(category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // WIZARD NAVIGATION LOGIC
+        let currentWizardStep = 1;
+
+        function nextStep(stepNum) {
+            // Hide current step
+            document.getElementById('wizard-step-' + currentWizardStep).classList.add('hidden');
+            
+            // Show new step
+            document.getElementById('wizard-step-' + stepNum).classList.remove('hidden');
+            currentWizardStep = stepNum;
+
+            // Update Step Line & Indicator Circles
+            const stepLine = document.getElementById('step-line');
+            stepLine.style.width = (stepNum * 25) + '%';
+
+            for(let i = 1; i <= 4; i++) {
+                const circle = document.getElementById('step-circle-' + i);
+                if(i <= stepNum) {
+                    circle.classList.remove('bg-gray-800', 'text-gray-400');
+                    circle.classList.add('bg-brand-gold', 'text-black');
+                } else {
+                    circle.classList.remove('bg-brand-gold', 'text-black');
+                    circle.classList.add('bg-gray-800', 'text-gray-400');
+                }
+            }
+        }
+
+        // START WIZARD PRE-SELECTED WITH CAR
+        function startWizardWithVehicle(vehicleName) {
+            switchTab('wizard');
+            const selectEl = document.getElementById('wizard-vehicle-select');
+            if(selectEl) {
+                selectEl.value = vehicleName;
+            }
+            nextStep(2);
+        }
+
+        // INSTANT WHATSAPP QUOTE GENERATOR SCRIPT
+        function generateWhatsAppQuote(e) {
+            e.preventDefault();
+            
+            const serviceType = document.querySelector('input[name="service_type"]:checked').value;
+            const vehicle = document.getElementById('wizard-vehicle-select').value;
+            const date = document.getElementById('wizard-date').value;
+            const location = document.getElementById('wizard-location').value;
+            const escort = document.getElementById('wizard-escort').value;
+            const name = document.getElementById('wizard-name').value;
+            const phone = document.getElementById('wizard-phone').value;
+
+            const textMessage = `Hello Southpole Autos (RC: 6944368), I would like an official quote for the following reservation:%0A%0A` +
+                `*Name:* ${encodeURIComponent(name)}%0A` +
+                `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                `*Service Requested:* ${encodeURIComponent(serviceType)}%0A` +
+                `*Vehicle Selection:* ${encodeURIComponent(vehicle)}%0A` +
+                `*Pickup Date:* ${encodeURIComponent(date)}%0A` +
+                `*Pickup Location:* ${encodeURIComponent(location)}%0A` +
+                `*Security Escort:* ${encodeURIComponent(escort)}%0A%0A` +
+                `Please confirm availability and transmit the invoice. Thank you!`;
+
+            const whatsappUrl = `https://wa.me/2349131466345?text=${textMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // ACCORDION FAQ TOGGLE
+        function toggleFaq(num) {
+            const answer = document.getElementById('faq-answer-' + num);
+            const icon = document.getElementById('faq-icon-' + num);
+
+            if(answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                answer.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // AI HYBRID CHAT TOGGLE
+        function toggleAiChat() {
+            const chatBox = document.getElementById('ai-chat-box');
+            chatBox.classList.toggle('hidden');
+        }
+
+        function sendAiQuery() {
+            const input = document.getElementById('ai-input');
+            const msgBox = document.getElementById('ai-messages');
+            const query = input.value.trim();
+
+            if(!query) return;
+
+            // Add User Message
+            msgBox.innerHTML += `<div class="bg-brand-gold/10 text-brand-gold p-2.5 rounded-lg text-right font-medium">${query}</div>`;
+            input.value = '';
+
+            // AI Response Logic
+            setTimeout(() => {
+                let reply = "Thank you for asking! For specific rates and custom bookings, please connect directly with our dispatch team on WhatsApp (+234 913 146 6345).";
+                if(query.toLowerCase().includes('price') || query.toLowerCase().includes('cost') || query.toLowerCase().includes('rate')) {
+                    reply = "Our daily rental rates range from ₦250,000 to ₦850,000 depending on armor level and vehicle type. Would you like to launch our WhatsApp quote generator?";
+                } else if(query.toLowerCase().includes('airport') || query.toLowerCase().includes('omagwa')) {
+                    reply = "We offer 24/7 airport pickup & protocol services at Omagwa International Airport (PHC).";
+                }
+                msgBox.innerHTML += `<div class="bg-white/5 p-2.5 rounded-lg border border-white/10 text-gray-300">${reply}</div>`;
+                msgBox.scrollTop = msgBox.scrollHeight;
+            }, 600);
+        }
+
+        // CORPORATE SUBMIT HANDLER
+        function handleCorporateSubmit(e) {
+            e.preventDefault();
+            const msg = document.getElementById('corporate-msg');
+            msg.classList.remove('hidden');
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 6000);
+        }
+
+        // DIRECT CONTACT SUBMIT HANDLER
+        function handleDirectContact(e) {
+            e.preventDefault();
+            const msg = document.getElementById('contact-msg');
+            msg.classList.remove('hidden');
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
